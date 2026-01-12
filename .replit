@@ -1,0 +1,14 @@
+language = "python3"
+entrypoint = "main.py"
+
+[env]
+DATABASE_URL = "sqlite:///./storage/databases/cyber_shield.db"
+SECRET_KEY = "cyber-shield-secret-key-replit-2024"
+PORT = "3000"
+
+[packages]
+python3 = "*"
+sqlite3 = "*"
+
+[features]
+devshell.prompt = "🚀 CyberShield: "
