@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abu Jamal CyberShield - نظام مكافحة الجرائم الإلكترونية</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a237e 0%, #311b92 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #00e5ff;
+            text-shadow: 0 0 10px rgba(0,229,255,0.5);
+        }
+        
+        .subtitle {
+            color: #b388ff;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #00e5ff;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #b388ff;
+            font-size: 1.1em;
+        }
+        
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .action-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .action-card:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: #00e5ff;
+            transform: scale(1.02);
+        }
+        
+        .action-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #00e5ff;
+        }
+        
+        .action-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .action-desc {
+            color: #b388ff;
+            line-height: 1.6;
+        }
+        
+        .login-section {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00e5ff;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 1em;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #00e5ff, #2979ff);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.3s;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,229,255,0.4);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #b388ff;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .logo {
+                font-size: 2em;
+            }
+            
+            .stat-card, .action-card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🛡️ Abu Jamal CyberShield</div>
+            <div class="subtitle">نظام متكامل لمكافحة الجرائم الإلكترونية وحماية الخصوصية</div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="cases-count">0</div>
+                <div class="stat-label">قضية نشطة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="evidence-count">0</div>
+                <div class="stat-label">دليل رقمي</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="solved-count">0</div>
+                <div class="stat-label">قضية محلولة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="success-rate">100%</div>
+                <div class="stat-label">نسبة النجاح</div>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <div class="action-card" onclick="window.location.href='/dashboard'">
+                <div class="action-icon">📊</div>
+                <div class="action-title">لوحة التحكم</div>
+                <div class="action-desc">إدارة القضايا والمتابعة والتحليل الشامل</div>
+            </div>
+            
+            <div class="action-card" onclick="window.location.href='/new-case'">
+                <div class="action-icon">🆕</div>
+                <div class="action-title">قضية جديدة</div>
+                <div class="action-desc">إبلاغ عن انتهاك جديد وبدء التحقيق</div>
+            </div>
+            
+            <div class="action-card" onclick="window.location.href='/evidence'">
+                <div class="action-icon">🔍</div>
+                <div class="action-title">الأدلة الرقمية</div>
+                <div class="action-desc">رفع وتحليل الأدلة الجنائية الرقمية</div>
+            </div>
+            
+            <div class="action-card" onclick="window.location.href='/reports'">
+                <div class="action-icon">📄</div>
+                <div class="action-title">التقارير</div>
+                <div class="action-desc">إنشاء وتصدير التقارير القانونية</div>
+            </div>
+        </div>
+        
+        <div class="login-section">
+            <div class="login-form">
+                <h3 style="text-align: center; margin-bottom: 20px; color: #00e5ff;">تسجيل الدخول</h3>
+                <div class="form-group">
+                    <label for="username">اسم المستخدم</label>
+                    <input type="text" id="username" placeholder="أدخل اسم المستخدم">
+                </div>
+                <div class="form-group">
+                    <label for="password">كلمة المرور</label>
+                    <input type="password" id="password" placeholder="أدخل كلمة المرور">
+                </div>
+                <button class="btn" onclick="login()">دخول</button>
+                <p style="text-align: center; margin-top: 15px; color: #b388ff;">
+                    المستخدم الافتراضي: admin / admin123
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 أبو جمال CyberShield - نظام مكافحة الجرائم الإلكترونية</p>
+            <p>الإصدار 1.0.0 | يعمل على: SQLite + JWT + Local Storage</p>
+        </div>
+    </div>
+    
+    <script>
+        async function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const response = await fetch('/api/v1/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem('token', data.access_token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    window.location.href = '/dashboard.html';
+                } else {
+                    alert('خطأ في تسجيل الدخول، تحقق من البيانات');
+                }
+            } catch (error) {
+                alert('خطأ في الاتصال بالخادم');
+            }
+        }
+        
+        // تحميل الإحصائيات عند فتح الصفحة
+        async function loadStats() {
+            try {
+                const token = localStorage.getItem('token');
+                if (!token) return;
+                
+                const response = await fetch('/api/v1/cases/', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    document.getElementById('cases-count').textContent = data.cases?.length || 0;
+                    
+                    // يمكن إضافة المزيد من الإحصائيات هنا
+                }
+            } catch (error) {
+                console.log('غير مسجل دخول بعد');
+            }
+        }
+        
+        // تشغيل تحميل الإحصائيات
+        loadStats();
+    </script>
+</body>
+</html>
